@@ -19,19 +19,18 @@ def cmap_plot(contact_map, n_frames, tick_labels, dw = 50):
     plt.show()
 
 def main():
+    CUTOFF = 6.0
     help=f"""
 
         Usage:
             python {sys.argv[0]} [ref.pdb] [traj.xtc]
             
             Criteria: 
-                d_ij <= cutoff (6 angstrome), residue i and j are in contact. 
+                d_ij <= cutoff ({CUTOFF} angstrome), residue i and j are in contact. 
 
      """
     print(help)
-    # Parameters
-    CUTOFF = 6.0
-
+ 
     ref, traj = sys.argv[1], sys.argv[2] #'../00_samples/sample3/em2.pdb', '../00_samples/sample3/npt_prod_0_skip10.xtc'
 
     u = Universe(ref, traj)

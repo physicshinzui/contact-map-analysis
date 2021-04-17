@@ -1,14 +1,15 @@
 # Contact map analysis 
 
 ## Requirements:
-- Python >3.6
+- Python >=3.6
 - MDAnalysis
 - Numpy 
 - Scipy
 - Matplotlib
+- Pandas
 
 ## Usage
-`python {sys.argv[0]} [ref.pdb] [traj.xtc]`
+`python cmap.py [ref.pdb] [traj.xtc]`
 
 ## GNU General Public License, version 2
 Copyright (C) Shinji Iida

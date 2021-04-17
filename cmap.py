@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 from tqdm import tqdm
 import sys
 
-def cmap_plot(contact_map, n_frames, tick_labels. dw = 50):
+def cmap_plot(contact_map, n_frames, tick_labels, dw = 50):
     fig, ax = plt.subplots()
     im = ax.imshow(contact_map / n_frames)
     fig.colorbar(im)
@@ -26,7 +26,7 @@ def main():
             
             Criteria: 
                 d_ij <= cutoff (6 angstrome), residue i and j are in contact. 
-                
+
      """
     print(help)
     # Parameters

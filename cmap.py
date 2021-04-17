@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 from MDAnalysis import Universe 
 import numpy as np 
 import pandas as pd

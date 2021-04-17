@@ -1,5 +1,6 @@
 from MDAnalysis import Universe 
 import numpy as np 
+import pandas as pd
 from scipy.spatial import distance_matrix
 import matplotlib.pyplot as plt
 from tqdm import tqdm
@@ -38,14 +39,15 @@ def main():
     n_frames = len((u.trajectory)) 
     print(f"Cutoff = {CUTOFF}, N frames = {n_frames}")
 
-    for frame in tqdm(u.trajectory[::100]):
+    for frame in tqdm(u.trajectory):
         coms  = u_sele.center_of_mass(compound='residues')
         idmap = distance_matrix(coms, coms)
         icmap = np.where(idmap <= CUTOFF, 1, 0)
         contact_map += icmap 
 
-    tick_labels = [resn+str(resi) for resn,resi in zip(u_sele.residues.resnames, u_sele.residues.resids)]
+    tick_labels = [resn+str(resi)+segid for resn,resi,segid in zip(u_sele.residues.resnames, u_sele.residues.resids, u_sele.residues.segids)]
     cmap_plot(contact_map, n_frames, tick_labels)
+    pd.DataFrame(contact_map, columns = tick_labels, index = tick_labels).to_csv('contact_matrix.dat')
 
 if __name__ == "__main__":
     main()

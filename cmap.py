@@ -23,7 +23,10 @@ def main():
 
         Usage:
             python {sys.argv[0]} [ref.pdb] [traj.xtc]
-
+            
+            Criteria: 
+                d_ij <= cutoff (6 angstrome), residue i and j are in contact. 
+                
      """
     print(help)
     # Parameters

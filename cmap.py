@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-
 from MDAnalysis import Universe 
 import numpy as np 
 import pandas as pd
@@ -8,7 +7,7 @@ import matplotlib.pyplot as plt
 from tqdm import tqdm
 import sys
 
-def cmap_plot(contact_map, n_frames, tick_labels, dw = 50):
+def cmap_plot(contact_map, n_frames, tick_labels, dw = 1):
     fig, ax = plt.subplots()
     im = ax.imshow(contact_map / n_frames)
     fig.colorbar(im)
@@ -33,7 +32,7 @@ def main():
      """
     print(help)
  
-    ref, traj = sys.argv[1], sys.argv[2] #'../00_samples/sample3/em2.pdb', '../00_samples/sample3/npt_prod_0_skip10.xtc'
+    ref, traj = sys.argv[1], sys.argv[2]
 
     u = Universe(ref, traj)
     u_sele = u.select_atoms('protein')
